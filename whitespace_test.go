@@ -27,7 +27,7 @@ func TestRemoveWhitespace(t *testing.T) {
 	}
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
-			s := remove(test.input)
+			s := Remove(test.input)
 
 			if s != test.want {
 				t.Errorf("got: <%v>, want: <%v>", s, test.want)
@@ -61,7 +61,7 @@ func TestIsBlank(t *testing.T) {
 	}
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
-			b := isBlank(test.input)
+			b := IsBlank(test.input)
 
 			if b != test.want {
 				t.Errorf("got: <%v>, want: <%v>", b, test.want)
