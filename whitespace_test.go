@@ -69,3 +69,48 @@ func TestIsBlank(t *testing.T) {
 		})
 	}
 }
+
+func TestHasBlank(t *testing.T) {
+	tests := []struct {
+		name  string
+		input []string
+		want  bool
+	}{
+		{"Empty slice", nil, true},
+		{"Single empty string", []string{""}, true},
+		{"Multiple empty strings", []string{"", "", ""}, true},
+		{"Single space string", []string{" "}, true},
+		{"Multiple space strings", []string{" ", " ", " "}, true},
+		{"Single tab string", []string{"\t"}, true},
+		{"Multiple tab strings", []string{"\t", "\t", "\t"}, true},
+		{"Single newline string", []string{"\n"}, true},
+		{"Multiple newline strings", []string{"\n", "\n", "\n"}, true},
+		{"Single return string", []string{"\r"}, true},
+		{"Multiple return strings", []string{"\r", "\r", "\r"}, true},
+		{"Single mixed string", []string{" \t\n\r"}, true},
+		{"Multiple mixed strings", []string{" \t\n", "\r\n", "\t\n ", "\t\n\r "}, true},
+		{"Non-blank with single empty string", []string{"123", ""}, true},
+		{"Non-blank with multiple empty strings", []string{"", "123", ""}, true},
+		{"Non-blank with single space string", []string{" ", "123 "}, true},
+		{"Non-blank with multiple space strings", []string{" ", " ", " 123"}, true},
+		{"Non-blank with single tab string", []string{"\t123", "\t"}, true},
+		{"Non-blank with multiple tab strings", []string{"\t", "\t123", "\t"}, true},
+		{"Non-blank with single newline string", []string{"123\n", "\n"}, true},
+		{"Non-blank with multiple newline strings", []string{"\n", "\n", "\n123"}, true},
+		{"Non-blank with single return string", []string{"\r123", "\r"}, true},
+		{"Non-blank with multiple return strings", []string{"123\r", "\r", "\r"}, true},
+		{"Non-blank with single mixed string", []string{"\t\n\r", " \t\n 123 \r"}, true},
+		{"Non-blank with multiple mixed strings", []string{" 123\t\n", "\r\n", "\t\n ", "123\t\n\r "}, true},
+		{"Single non-blank string", []string{"123"}, false},
+		{"Multiple non-blank strings", []string{"123", "456", "789"}, false},
+	}
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			b := HasBlank(test.input)
+
+			if b != test.want {
+				t.Errorf("got: <%v>, want: <%v>", b, test.want)
+			}
+		})
+	}
+}
