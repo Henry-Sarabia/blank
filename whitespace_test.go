@@ -109,7 +109,7 @@ func TestHasBlank(t *testing.T) {
 		{"Non-blank with multiple nonbreaking space strings", []string{"\u00a0", "\u00a0", "\u00a0123"}, true},
 		{"Non-blank with single tab string", []string{"\t123", "\t"}, true},
 		{"Non-blank with multiple tab strings", []string{"\t", "\t123", "\t"}, true},
-		{"Non-blank with single vertical tab string", []string{"\v123", "\v123"}, true},
+		{"Non-blank with single vertical tab string", []string{"\v123", "\v"}, true},
 		{"Non-blank with multiple vertical tab strings", []string{"\v", "\v123", "\v"}, true},
 		{"Non-blank with single newline string", []string{"123\n", "\n"}, true},
 		{"Non-blank with multiple newline strings", []string{"\n", "\n", "\n123"}, true},
