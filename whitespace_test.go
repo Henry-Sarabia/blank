@@ -51,7 +51,7 @@ func TestIsBlank(t *testing.T) {
 		{"Vertical tab", "\v", true},
 		{"Newline", "\n", true},
 		{"Return", "\r", true},
-		{"Mixed", " \t\n\r", true},
+		{"Mixed", " \t\n\r\v\u00a0", true},
 		{"Non-blank with space", "one two", false},
 		{"Non-blank with nonbreaking space", "one\u00a0two", false},
 		{"Non-blank with tab", "one \t two", false},
@@ -65,7 +65,7 @@ func TestIsBlank(t *testing.T) {
 		{"Non-blank with surrounding vertical tab", "\vone\vtwo\v", false},
 		{"Non-blank with surrounding newline", "\none\ntwo\n", false},
 		{"Non-blank with surrounding return", "\rone\rtwo\r", false},
-		{"Non-blank with surrounding mixed", "\t\n\r onetwo \t\n\r", false},
+		{"Non-blank with surrounding mixed", "\t\n\r\v\u00a0 onetwo \t\n\r\v\u00a0", false},
 	}
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
@@ -116,7 +116,7 @@ func TestHasBlank(t *testing.T) {
 		{"Non-blank with single return string", []string{"\r123", "\r"}, true},
 		{"Non-blank with multiple return strings", []string{"123\r", "\r", "\r"}, true},
 		{"Non-blank with single mixed string", []string{"\t\n\r", " \t\n 123 \r"}, true},
-		{"Non-blank with multiple mixed strings", []string{" 123\t\n", "\r\n", "\t\n ", "123\t\n\r "}, true},
+		{"Non-blank with multiple mixed strings", []string{" 123\t\n\v", "\r\n\u00a0", "\t\n\u00a0 ", "123\t\n\r\v\u00a0 "}, true},
 		{"Single non-blank string", []string{"123"}, false},
 		{"Multiple non-blank strings", []string{"123", "456", "789"}, false},
 	}
