@@ -1,8 +1,8 @@
-package whitespace
+package blank
 
 import "testing"
 
-func TestRemoveWhitespace(t *testing.T) {
+func TestRemoveSpace(t *testing.T) {
 	tests := []struct {
 		name  string
 		input string
@@ -29,7 +29,7 @@ func TestRemoveWhitespace(t *testing.T) {
 	}
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
-			s := Remove(test.input)
+			s := RemoveSpace(test.input)
 
 			if s != test.want {
 				t.Errorf("got: <%v>, want: <%v>", s, test.want)
@@ -38,7 +38,7 @@ func TestRemoveWhitespace(t *testing.T) {
 	}
 }
 
-func TestIsBlank(t *testing.T) {
+func TestIs(t *testing.T) {
 	tests := []struct {
 		name  string
 		input string
@@ -69,7 +69,7 @@ func TestIsBlank(t *testing.T) {
 	}
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
-			b := IsBlank(test.input)
+			b := Is(test.input)
 
 			if b != test.want {
 				t.Errorf("got: <%v>, want: <%v>", b, test.want)
@@ -78,7 +78,7 @@ func TestIsBlank(t *testing.T) {
 	}
 }
 
-func TestHasBlank(t *testing.T) {
+func TestHas(t *testing.T) {
 	tests := []struct {
 		name  string
 		input []string
@@ -122,7 +122,7 @@ func TestHasBlank(t *testing.T) {
 	}
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
-			b := HasBlank(test.input)
+			b := Has(test.input)
 
 			if b != test.want {
 				t.Errorf("got: <%v>, want: <%v>", b, test.want)
