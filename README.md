@@ -1,47 +1,30 @@
-# whitespace
+# blank
 
-[![GoDoc](https://godoc.org/github.com/Henry-Sarabia/whitespace?status.svg)](https://godoc.org/github.com/Henry-Sarabia/whitespace) [![Build Status](https://travis-ci.com/Henry-Sarabia/whitespace.svg?branch=master)](https://travis-ci.com/Henry-Sarabia/whitespace) [![Go Report Card](https://goreportcard.com/badge/github.com/Henry-Sarabia/whitespace)](https://goreportcard.com/report/github.com/Henry-Sarabia/whitespace) [![Coverage Status](https://coveralls.io/repos/github/Henry-Sarabia/whitespace/badge.svg?branch=master)](https://coveralls.io/github/Henry-Sarabia/whitespace?branch=master)
+[![GoDoc](https://godoc.org/github.com/Henry-Sarabia/blank?status.svg)](https://godoc.org/github.com/Henry-Sarabia/blank) [![Build Status](https://travis-ci.com/Henry-Sarabia/blank.svg?branch=master)](https://travis-ci.com/Henry-Sarabia/blank) [![Go Report Card](https://goreportcard.com/badge/github.com/Henry-Sarabia/blank)](https://goreportcard.com/report/github.com/Henry-Sarabia/blank) [![Coverage Status](https://coveralls.io/repos/github/Henry-Sarabia/blank/badge.svg?branch=master)](https://coveralls.io/github/Henry-Sarabia/blank?branch=master)
 
-Whitespace implements blank checking and whitespace removal for strings. There are times when you
+Blank implements blank checking and whitespace removal for strings. There are times when you
 only need to make sure your string arguments are not empty. However, there are other times when you
 need to not only make sure they aren't empty, but also not blank or made up of whitespace. This is
-where the whitespace package can help.
+where the blank package can help.
 
 ## Installation 
 
 If you do not have Go installed yet, you can find installation instructions 
 [here](https://golang.org/doc/install).
 
-To pull the most recent version of whitespace, use `go get`.
+To pull the most recent version of blank, use `go get`.
 
 ```
-go get github.com/Henry-Sarabia/whitespace
+go get github.com/Henry-Sarabia/blank
 ```
 
 Then import the package into your project.
 
 ```go
-import "github.com/Henry-Sarabia/whitespace"
+import "github.com/Henry-Sarabia/blank"
 ```
 
 ## Usage
-
-
-### Whitespace Removal
-
-This package considers whitespace to be any of these common characters: space, tab, newline, and
-return. 
-
-To remove the whitespace from a string, use the `Remove(string)` function.
-
-```go
-phrase := "this is a phrase"
-
-str := whitespace.Remove(phrase)
-
-fmt.Println(str)
-// output: "thisisaphrase"
-```
 
 ### Blank checking
 
@@ -50,7 +33,7 @@ This package considers a string to be blank if it is solely made up of whitespac
 As an example, assume you are creating a search function that takes a string argument as the search
 query. You want to avoid searching for any empty queries. This includes both empty strings and 
 blank strings. The first case can be resolved by comparing the string against the empty string.
-The second case is where the whitespace package and the `IsBlank(string)` function is most useful.
+The second case is where the blank package and the `Is(string)` function is most useful.
 
 ```go
 func search(qry string) error {
@@ -58,7 +41,7 @@ func search(qry string) error {
 		// return some error
 	}
 	
-	if whitespace.IsBlank(qry) {
+	if blank.Is(qry) {
 		// return some other error
 	}
 	
@@ -66,7 +49,24 @@ func search(qry string) error {
 }
 ```
 
-Similarly, the `HasBlank([]string)` function can check an entire slice of strings for blanks.
+Similarly, the `Has([]string)` function can check an entire slice of strings for blanks.
+
+### Whitespace Removal
+
+This package considers whitespace to be any of these common characters: space, tab, newline, and
+return. Other uncommon whitespace characters such as nonbreaking space and vertical tab are now supported
+as well.
+
+To remove the whitespace from a string, use the `Remove(string)` function.
+
+```go
+phrase := "this is a phrase"
+
+str := blank.RemoveSpace(phrase)
+
+fmt.Println(str)
+// output: "thisisaphrase"
+```
 
 ## Contributions
 
