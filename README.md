@@ -1,6 +1,6 @@
 # blank
 
-[![GoDoc](https://godoc.org/github.com/Henry-Sarabia/blank?status.svg)](https://godoc.org/github.com/Henry-Sarabia/blank) [![Build Status](https://travis-ci.com/Henry-Sarabia/whitespace.svg?branch=master)](https://travis-ci.com/Henry-Sarabia/whitespace) [![Go Report Card](https://goreportcard.com/badge/github.com/Henry-Sarabia/blank)](https://goreportcard.com/report/github.com/Henry-Sarabia/blank) [![Coverage Status](https://coveralls.io/repos/github/Henry-Sarabia/blank/badge.svg?branch=master)](https://coveralls.io/github/Henry-Sarabia/blank?branch=master)
+[![GoDoc](https://godoc.org/github.com/Henry-Sarabia/blank?status.svg)](https://godoc.org/github.com/Henry-Sarabia/blank) [![Build Status](https://travis-ci.com/Henry-Sarabia/blank.svg?branch=master)](https://travis-ci.com/Henry-Sarabia/blank) [![Go Report Card](https://goreportcard.com/badge/github.com/Henry-Sarabia/blank)](https://goreportcard.com/report/github.com/Henry-Sarabia/blank) [![Coverage Status](https://coveralls.io/repos/github/Henry-Sarabia/blank/badge.svg?branch=master)](https://coveralls.io/github/Henry-Sarabia/blank?branch=master)
 
 Blank implements blank checking and whitespace removal for strings. There are times when you
 only need to make sure your string arguments are not empty. However, there are other times when you
