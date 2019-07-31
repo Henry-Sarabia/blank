@@ -2,7 +2,7 @@ package blank
 
 import "testing"
 
-func TestRemoveSpace(t *testing.T) {
+func TestRemove(t *testing.T) {
 	tests := []struct {
 		name  string
 		input string
@@ -29,7 +29,7 @@ func TestRemoveSpace(t *testing.T) {
 	}
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
-			s := RemoveSpace(test.input)
+			s := Remove(test.input)
 
 			if s != test.want {
 				t.Errorf("got: <%v>, want: <%v>", s, test.want)
