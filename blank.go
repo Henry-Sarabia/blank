@@ -4,13 +4,13 @@ import (
 	"unicode"
 )
 
-// RemoveSpace returns the provided string with all of the whitespace removed.
+// Remove returns the provided string with all whitespace removed.
 // This includes spaces, tabs, newlines, returns, form feeds and other
 // space-like characters.
 //
 // For more information on what is considered whitespace, visit:
 // https://golang.org/pkg/unicode/#IsSpace
-func RemoveSpace(str string) string {
+func Remove(str string) string {
 	var out []rune
 	for _, r := range str {
 		if !unicode.IsSpace(r) {
@@ -24,7 +24,7 @@ func RemoveSpace(str string) string {
 // Is returns true if the provided string is empty or consists only of
 // whitespace. Returns false otherwise.
 func Is(str string) bool {
-	if RemoveSpace(str) == "" {
+	if Remove(str) == "" {
 		return true
 	}
 
